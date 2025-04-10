@@ -3,8 +3,8 @@
 		<nav class="navigation">
 			<div class="navigation-buttons">
 				<button @click="scrollToSection('our-story')">Our Story</button>
-			<button @click="scrollToSection('how-to-get-there')">How to Get There</button>
-			<button @click="scrollToSection('gallery')">Gallery</button>
+				<button @click="scrollToSection('how-to-get-there')">How to Get There</button>
+				<button @click="scrollToSection('gallery')">Gallery</button>
 			</div>
 			<div class="navigation-title" @click="scrollToTop">
 				<h1>Dagmara & Rafał</h1>
@@ -12,7 +12,6 @@
 		</nav>
 
 		<header class="header">
-
 			<div class="header-photos">
 				<div class="side-photo left">
 					<img src="/images/D_R014.svg" alt="Wedding photo" loading="eager" />
@@ -54,9 +53,9 @@ export default {
 		meta: [
 			{
 				name: 'description',
-				content: 'Wesele Dagmary i Rafała - 20.09.2025'
-			}
-		]
+				content: 'Wesele Dagmary i Rafała - 20.09.2025',
+			},
+		],
 	},
 	methods: {
 		scrollToSection(sectionId) {
@@ -66,17 +65,17 @@ export default {
 		scrollToTop() {
 			window.scrollTo({
 				top: 0,
-				behavior: 'smooth'
+				behavior: 'smooth',
 			});
-		}
-	}
-}
+		},
+	},
+};
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap');
 #app {
-	font-family: "Noto Serif Display", serif;
+	font-family: 'Noto Serif Display', serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
@@ -86,7 +85,8 @@ export default {
 	position: relative;
 }
 
-html, body {
+html,
+body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
@@ -114,7 +114,8 @@ html, body {
 	width: 100%;
 }
 
-.side-photo, .main-photo {
+.side-photo,
+.main-photo {
 	position: relative;
 	overflow: hidden;
 }
@@ -125,8 +126,8 @@ html, body {
 	object-position: center;
 	display: block;
 }
-.main-photo img{
-	object-fit: cover;	
+.main-photo img {
+	object-fit: cover;
 	object-position: 40% center;
 	height: 100% !important;
 	width: 100% !important;
@@ -136,7 +137,7 @@ html, body {
 	width: 20%;
 	height: 50%;
 }
-.right img{
+.right img {
 	object-position: 70% center;
 }
 
@@ -146,7 +147,7 @@ html, body {
 }
 
 .date {
-	font-family: "Noto Serif Display", serif;
+	font-family: 'Noto Serif Display', serif;
 	width: 100%;
 	height: auto;
 	position: absolute;
@@ -161,7 +162,7 @@ html, body {
 }
 
 .navigation {
-	font-family: "Noto Serif Display", serif;
+	font-family: 'Noto Serif Display', serif;
 	width: 100%;
 	padding: 1rem;
 	position: fixed;
@@ -301,7 +302,7 @@ h2 {
 		width: 100%;
 		text-align: center;
 		margin-bottom: 1rem;
-		h1{
+		h1 {
 			font-size: 2rem;
 		}
 	}
