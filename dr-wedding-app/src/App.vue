@@ -6,18 +6,24 @@
 			<button @click="scrollToSection('how-to-get-there')">How to Get There</button>
 			<button @click="scrollToSection('gallery')">Gallery</button>
 			</div>
-			<div class="navigation-title">
+			<div class="navigation-title" @click="scrollToTop">
 				<h1>Dagmara & Rafał</h1>
 			</div>
 		</nav>
 
 		<header class="header">
+
 			<div class="header-photos">
-				<div class="side-photo left" style="background-image: url('/images/D&R014.JPG')"></div>
-				<div class="main-photo" style="background-image: url('/images/D&R099.JPG')">
+				<div class="side-photo left">
+					<img src="/images/D_R014.svg" alt="Wedding photo" loading="eager" />
+				</div>
+				<div class="main-photo">
+					<img src="/images/D_R099.svg" alt="Wedding photo" loading="eager" />
 					<div class="date">20-09-2025</div>
 				</div>
-				<div class="side-photo right" style="background-image: url('/images/D&R119.JPG')"></div>
+				<div class="side-photo right">
+					<img src="/images/D_R119.svg" alt="Wedding photo" loading="eager" />
+				</div>
 			</div>
 		</header>
 
@@ -56,18 +62,35 @@ export default {
 		scrollToSection(sectionId) {
 			const element = document.getElementById(sectionId);
 			element.scrollIntoView({ behavior: 'smooth' });
+		},
+		scrollToTop() {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			});
 		}
 	}
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap');
 #app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
+	font-family: "Noto Serif Display", serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #000000;
+	max-width: 100vw;
+	overflow-x: hidden;
+	position: relative;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow-x: hidden;
 }
 
 .header {
@@ -91,45 +114,64 @@ export default {
 	width: 100%;
 }
 
+.side-photo, .main-photo {
+	position: relative;
+	overflow: hidden;
+}
+
+.side-photo img {
+	width: 100%;
+	height: 100%;
+	object-position: center;
+	display: block;
+}
+.main-photo img{
+	object-fit: cover;	
+	object-position: 40% center;
+	height: 100% !important;
+	width: 100% !important;
+}
+
 .side-photo {
 	width: 20%;
-	height: 40%;
-	background-color: #f0f0f0;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+	height: 50%;
+}
+.right img{
+	object-position: 70% center;
 }
 
 .main-photo {
-	width: 35%;
-	height: 60%;
-	background-color: #f0f0f0;
-	background-size: cover;
-	background-position: center;
-	position: relative;
+	width: 30%;
+	height: 70%;
 }
 
 .date {
+	font-family: "Noto Serif Display", serif;
+	width: 100%;
+	height: auto;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	font-size: 5rem;
+	font-size: 10rem;
 	font-weight: bold;
 	color: Black;
 	text-shadow: 2px 2px 4px rgb(255, 255, 255);
+	z-index: 10;
 }
 
 .navigation {
+	font-family: "Noto Serif Display", serif;
 	width: 100%;
 	padding: 1rem;
-	position: sticky;
+	position: fixed;
 	top: 0;
 	z-index: 100;
 	margin-bottom: 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	z-index: 999;
 }
 
 .navigation-buttons {
@@ -141,11 +183,17 @@ export default {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
+	cursor: pointer;
+	transition: opacity 0.3s;
+}
+
+.navigation-title:hover {
+	opacity: 0.8;
 }
 
 .navigation-title h1 {
 	margin: 0;
-	font-size: 1.5rem;
+	font-size: 4rem;
 	font-weight: normal;
 }
 
@@ -170,6 +218,7 @@ export default {
 .section {
 	padding: 4rem 2rem;
 	min-height: 400px;
+	height: 100vh;
 	background-color: #ffffff;
 }
 
@@ -207,7 +256,21 @@ h2 {
 	.navigation {
 		padding: 0.5rem;
 		width: 100%;
-		flex-direction: row;
+		flex-direction: column-reverse;
+		justify-content: center;
+	}
+
+	.navigation-title {
+		position: relative;
+		left: 0;
+		transform: none;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 1rem;
+	}
+
+	.navigation-buttons {
+		width: 100%;
 		justify-content: center;
 	}
 
@@ -221,7 +284,31 @@ h2 {
 
 @media screen and (max-width: 480px) {
 	.date {
-		font-size: 1.5rem;
+		font-size: 4rem;
+	}
+
+	.navigation {
+		padding: 0.5rem;
+		width: 100%;
+		flex-direction: column-reverse;
+		justify-content: center;
+	}
+
+	.navigation-title {
+		position: relative;
+		left: 0;
+		transform: none;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 1rem;
+		h1{
+			font-size: 2rem;
+		}
+	}
+
+	.navigation-buttons {
+		width: 100%;
+		justify-content: center;
 	}
 
 	.navigation button {
